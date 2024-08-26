@@ -1,0 +1,85 @@
+---
+title: "learningfars"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{learningfars}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+# fars
+
+The purpose of the fars package is to better read, summarize, and display data retrieved from the Fatality Analysis Reporting System. This includes providing functions that simplify the process of reading across multiple years’ traffic fatality data sets. In addition the package provides a function to plot a year’s data geographically by state.
+
+The following functions are provided by the fars package:
+
+* **fars_read :** a function for reading in fars data as a csv file.
+
+* **make_filename :** a function for creating fars data filenames from an inputted year.
+
+* **fars_read_years :** a function for reading in multiple years of fars data.
+
+* **fars_summarize_years :** a function for summarizing multiple years of fars data by fatalities per month each year.
+
+* **fars_map_state :** a function for graphically displaying fars data on  a map of a specified U.S. state.
+
+## Installing & Loading the Package
+
+In order to use the fars package, it will first need to be installed. This can be done by running the following line of code:
+
+```{r install_fars}
+#install_github("ckvolle/fars")
+```
+
+To load this package into your work space you can run the following:
+
+```{r load_fars}
+library(fars)
+```
+
+It's also useful to load the dplyr function with the following:
+
+```{r load_dplyr}
+library(dplyr)
+```
+
+## fars_read
+
+While doing an analysis on a set of FARS data, it may be useful to have a function to read in the fars CSV data and convert it to a more manageable data frame object. This is where the fars_read function comes in handy. If you wanted to read in the file “accident_2013.csv.bz2” you could use the fars_read function:
+
+```{r fars_read}
+fars_read("accident_2013.csv.bz2")
+```
+
+## make_filename
+
+Traffic accident fatality data from FARS follows a common structure “accident_year.csv.bz2”. To avoid typing out the entire filename it may be helpful to use the make_filename function. This function takes a year as a character string, integer, or whole-number numeric, and returns a character string that gives the filename for that year's data. If you wanted to read in a FARS data set in as a data frame you could use this function in combination to the fars_read function as follows:
+
+```{r make_filename}
+fars_read(make_filename(2013))
+```
+
+## fars_read_years
+
+If you were interested in viewing a summary of these years by month and year, to perhaps analyze patterns in the amount of traffic fatalities, the fars_summarize_years function provided by the fars package can provide such a summary. For example, if you were interested in looking for a pattern indicating that traffic fatalities increase during the summer months over the years 2013-2015, you could use the fars_summarize_years function as follows:
+
+```{r fars_summarize_years}
+fars_summarize_years(c(2013,2014,2015))
+```
+
+## fars_map_state
+
+It may also be important to look for patterns in the location of traffic fatalities, in order to identify high risk areas. This can be accomplished using the fars_map_state function. This function provides a map of the selected state, and plots on this map the locations of the selected year’s traffic fatalities. If you were interested in finding the “hotspots” for traffic accident fatalities in the state of Illinois in the year 2013, you use the function as follows:
+
+```{r fars_map_state}
+fars_map_state(17, 2013)
+```
