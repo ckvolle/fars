@@ -4,6 +4,7 @@
 # fars
 
 <!-- badges: start -->
+[![Build Status](https://app.travis-ci.com/ckvolle/fars.svg?token=mBCzScrmiywpaaWMtDnz&branch=main)](https://app.travis-ci.com/ckvolle/fars)
 <!-- badges: end -->
 
 The purpose of the fars package is to better read, summarize, and

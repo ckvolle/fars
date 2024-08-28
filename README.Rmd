@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 # fars
 
 <!-- badges: start -->
+[![Build Status](https://app.travis-ci.com/ckvolle/fars.svg?token=mBCzScrmiywpaaWMtDnz&branch=main)](https://app.travis-ci.com/ckvolle/fars)
 <!-- badges: end -->
 
 The purpose of the fars package is to better read, summarize, and display data retrieved from the Fatality Analysis Reporting System. This includes providing functions that simplify the process of reading across multiple years’ traffic fatality data sets. In addition the package provides a function to plot a year’s data geographically by state.
